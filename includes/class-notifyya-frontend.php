@@ -15,6 +15,7 @@ class NotifyYa_Frontend {
         add_action( 'woocommerce_single_product_summary', array( $this, 'render_widget' ), 31 );
         add_action( 'woocommerce_after_add_to_cart_form', array( $this, 'render_widget' ), 5 );
         add_action( 'woocommerce_product_meta_end', array( $this, 'render_widget' ), 20 );
+        add_action( 'wp_footer', array( $this, 'render_footer_fallback' ), 5 );
         add_shortcode( 'notifyya_back_in_stock', array( $this, 'render_shortcode' ) );
     }
 
@@ -93,6 +94,19 @@ class NotifyYa_Frontend {
 
         $this->has_rendered = true;
         return $markup;
+    }
+
+    public function render_footer_fallback() {
+        if ( ! function_exists( 'is_product' ) || ! is_product() ) {
+            return;
+        }
+
+        $markup = $this->get_widget_markup();
+        if ( '' === $markup ) {
+            return;
+        }
+
+        echo '<div id="notifyya-footer-template" hidden>' . $markup . '</div>';
     }
 
     private function get_widget_markup() {

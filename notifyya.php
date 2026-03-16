@@ -2,7 +2,7 @@
 /**
  * Plugin Name: NotifyYa
  * Description: Back-in-stock notifications for WooCommerce products.
- * Version: 0.1.1
+ * Version: 0.1.2
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * Author: Codex
@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-define( 'NOTIFYYA_VERSION', '0.1.1' );
+define( 'NOTIFYYA_VERSION', '0.1.2' );
 define( 'NOTIFYYA_FILE', __FILE__ );
 define( 'NOTIFYYA_DIR', plugin_dir_path( __FILE__ ) );
 define( 'NOTIFYYA_URL', plugin_dir_url( __FILE__ ) );
